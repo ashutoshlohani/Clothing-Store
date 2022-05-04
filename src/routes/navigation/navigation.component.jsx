@@ -13,6 +13,15 @@ function Nav() {
                <Link to='/shop' className='nav-link'>
                   Shop
                </Link>
+               <Link to='/contact' className='nav-link'>
+                  Contact
+               </Link>
+               <Link to='/signin' className='nav-link'>
+                  Sign In
+               </Link>
+               <Link to='/cart' className='nav-link'>
+                  Cart
+               </Link>
             </div>
          </div>
          <Outlet />
