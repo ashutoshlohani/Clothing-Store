@@ -65,13 +65,11 @@ export async function createUserDocFromAuth(userAuth, additionalInformation = {}
 // 🔥 Implementing authentication with email and password
 export async function createAuthUserWithEmailAndPass(email, password) {
    if (!email || !password) return;
-
    return await createUserWithEmailAndPassword(auth, email, password);
 }
 
 // 🔥 Implementing sign-in with email and password
 export async function signInAuthUserWithEmailAndPass(email, password) {
    if (!email || !password) return;
-
    return await signInWithEmailAndPassword(auth, email, password);
 }

@@ -1,7 +1,7 @@
 import CategoryItem from '../category-item/category-item.component';
 import './category-menu.styles.scss';
 
-const Menu = ({ categories }) => {
+function Menu({ categories }) {
    return (
       <div className='container'>
          {categories.map(category => (
@@ -9,6 +9,6 @@ const Menu = ({ categories }) => {
          ))}
       </div>
    );
-};
+}
 
 export default Menu;

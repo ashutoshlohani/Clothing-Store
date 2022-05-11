@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
 import {
    signInWithGooglePopup,
    createUserDocFromAuth,
    signInAuthUserWithEmailAndPass,
 } from '../../utils/firebase/firebase.utils';
+import { useState } from 'react';
+import FormInput from '../form-input/form-input.component';
+import Button from '../button/button.component';
 import './sign-in-form.styles.scss';
 
 const defaultFormField = {
@@ -13,7 +13,7 @@ const defaultFormField = {
    password: '',
 };
 
-const SignInForm = () => {
+function SignInForm() {
    const [formField, setFormField] = useState(defaultFormField);
    const { email, password } = formField;
 
@@ -78,6 +78,6 @@ const SignInForm = () => {
          </form>
       </div>
    );
-};
+}
 
 export default SignInForm;
