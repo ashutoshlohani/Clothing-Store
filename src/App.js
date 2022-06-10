@@ -8,10 +8,6 @@ function Contact() {
    return <h1>Contact</h1>;
 }
 
-function Cart() {
-   return <h1>Cart</h1>;
-}
-
 function App() {
    return (
       <Routes>
@@ -20,7 +16,6 @@ function App() {
             <Route path='/shop' element={<Shop />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/auth' element={<Authentication />} />
-            <Route path='/cart' element={<Cart />} />
          </Route>
       </Routes>
    );
