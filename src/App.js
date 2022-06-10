@@ -2,10 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './routes/home/home.component';
 import Nav from './routes/navigation/navigation.component';
 import Authentication from './routes/authentication/authentication.component';
-
-function Shop() {
-   return <h1>Shop</h1>;
-}
+import Shop from './routes/shop/shop.component';
 
 function Contact() {
    return <h1>Contact</h1>;
