@@ -8,7 +8,17 @@ import {
    signOut,
    onAuthStateChanged,
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+
+import {
+   getFirestore,
+   doc,
+   getDoc,
+   setDoc,
+   collection,
+   writeBatch,
+   query,
+   getDocs,
+} from 'firebase/firestore';
 
 const firebaseConfig = {
    apiKey: 'AIzaSyCw9uS4OdggWCwv9oEMrAu47rKW_iAVg8o',
@@ -39,6 +49,36 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 // 🔥 Creating a reference to the Firebase database
 
 const db = getFirestore();
+
+// Adding products data to a new collection in the database
+export async function addCollectionAndDocuments(collectionKey, objectsToAdd) {
+   const collectionRef = collection(db, collectionKey);
+   const batch = writeBatch(db);
+
+   objectsToAdd.forEach(obj => {
+      const docRef = doc(collectionRef, obj.title.toLowerCase());
+      batch.set(docRef, obj);
+   });
+
+   await batch.commit();
+   console.log('done👌');
+}
+
+// Get products data from a collection in the database
+export const getCollectionAndDocuments = async () => {
+   const collectionRef = collection(db, 'products');
+   const q = query(collectionRef);
+
+   const querySnapshot = await getDocs(q);
+   const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+      const { title, items } = docSnapshot.data();
+      acc[title.toLowerCase()] = items;
+      return acc;
+   }, {});
+
+   return categoryMap;
+};
+
 // Pass response from signInWithGooglePopup and signInWithGoogleRedirect to createUserDocFromAuth
 export async function createUserDocFromAuth(userAuth, additionalInformation = {}) {
    if (!userAuth) return;
